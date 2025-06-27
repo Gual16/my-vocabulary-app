@@ -1,0 +1,559 @@
+:root {
+    /* Happy, but pale colors */
+    --primary-color: #BEE3DB; /* Pale Mint Green */
+    --secondary-color: #F0B3B6; /* Pale Rose Pink */
+    --accent-color: #F8D8A0; /* Pale Sunny Yellow */
+    --background-color: #FDFDFD; /* Near White */
+    --card-background: #FFFFFF; /* Pure White for cards */
+    --border-color: #E0E0E0; /* Very Light Grey */
+    --text-color: #333333; /* Dark Grey for readability (important for happy colors) */
+    --light-text-color: #666666; /* Medium Grey */
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.07); /* Slightly more prominent, but still soft */
+    --hover-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+    
+    /* Specific feedback colors (need to be clear) */
+    --correct-feedback-bg: #E6FFE6; /* Very light green */
+    --correct-feedback-text: #4CAF50; /* Brighter green */
+    --incorrect-feedback-bg: #FFEBEE; /* Very light red */
+    --incorrect-feedback-text: #F44336; /* Brighter red */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    margin-bottom: 1rem;
+    color: var(--text-color); /* Ensure header title is readable */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+}
+
+nav button {
+    background-color: var(--secondary-color);
+    color: var(--text-color); /* Changed to text-color for better contrast/harmony with new palette */
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Soft shadow for buttons */
+}
+
+nav button:hover {
+    background-color: #EBA0A4; /* Slightly darker rose pink */
+    transform: translateY(-2px);
+}
+
+main {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--card-background);
+}
+
+section.hidden {
+    display: none;
+}
+
+section.active {
+    display: block;
+}
+
+h2 {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- Form Styles --- */
+#wordForm .input-group {
+    margin-bottom: 15px;
+}
+
+#wordForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: var(--light-text-color);
+}
+
+.word-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between input and button */
+}
+
+#wordForm input[type="text"],
+#wordForm textarea {
+    flex-grow: 1; /* Allow input to take available space */
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    box-sizing: border-box; /* Include padding in width */
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+#addUpdateBtn {
+    background-color: var(--primary-color);
+    color: var(--text-color); /* Consistent with nav buttons */
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#addUpdateBtn:hover {
+    background-color: #A0D0C6; /* Darker mint */
+    transform: translateY(-2px);
+}
+
+/* --- Vocabulary List Styles --- */
+#vocabularyList {
+    list-style: none;
+    padding: 0;
+}
+
+#vocabularyList li {
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow content to wrap */
+    box-shadow: var(--shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#vocabularyList li:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--hover-shadow);
+}
+
+#vocabularyList li .word-content {
+    flex-grow: 1;
+    margin-right: 15px;
+}
+
+#vocabularyList li h3 {
+    margin: 0 0 5px 0;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#vocabularyList li p {
+    margin: 5px 0;
+}
+
+#vocabularyList li .example-text {
+    font-style: italic;
+    color: var(--light-text-color);
+    font-size: 0.9em;
+}
+
+.edit-btn, .remove-btn {
+    background-color: var(--accent-color);
+    color: var(--text-color); /* Changed for better contrast */
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.remove-btn {
+    background-color: var(--incorrect-feedback-text); /* Brighter red for delete */
+    color: white; /* Keep white for strong contrast */
+}
+
+.edit-btn:hover {
+    background-color: #EAC990; /* Darker sunny yellow */
+    transform: translateY(-2px);
+}
+
+.remove-btn:hover {
+    background-color: #D33225; /* Darker bright red */
+    transform: translateY(-2px);
+}
+
+/* Progress Bar Styles */
+.stats-text {
+    font-size: 0.85em;
+    color: var(--light-text-color);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background-color: var(--border-color);
+    border-radius: 5px;
+    overflow: hidden;
+    height: 8px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%; /* Will be set by JS */
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    transition: width 0.5s ease-in-out, background-color 0.3s ease;
+}
+
+/* --- Flashcard Styles --- */
+#exerciseSection {
+    text-align: center;
+}
+
+#startExercise {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#startExercise:hover {
+    background-color: #A0D0C6;
+    transform: translateY(-2px);
+}
+
+#flashcardContainer {
+    perspective: 1000px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#flashcard {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    border-radius: 10px;
+    background-color: var(--card-background);
+}
+
+#flashcard.flipped {
+    transform: rotateY(180deg);
+}
+
+.flashcard-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color: var(--card-background);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+}
+
+.flashcard-front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flashcard-back {
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    color: var(--text-color);
+    font-weight: normal;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* THIS IS THE KEY CHANGE TO UN-MIRROR THE CONTENT ON THE BACK */
+.flashcard-back > span,
+.flashcard-back > small,
+.flashcard-back > button {
+    display: block;
+    color: var(--text-color);
+    transform: scaleX(-1); /* Corrects mirroring effect on content */
+}
+
+
+.flashcard-back small {
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: var(--light-text-color);
+}
+
+.feedback-buttons {
+    margin-top: 20px;
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.feedback-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.feedback-btn.correct {
+    background-color: var(--correct-feedback-text);
+    color: white;
+}
+
+.feedback-btn.correct:hover {
+    background-color: #388E3C;
+    transform: translateY(-2px);
+}
+
+.feedback-btn.incorrect {
+    background-color: var(--incorrect-feedback-text);
+    color: white;
+}
+
+.feedback-btn.incorrect:hover {
+    background-color: #D32F2F;
+    transform: translateY(-2px);
+}
+
+.next-card-btn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.next-card-btn:hover {
+    background-color: #EBA0A4;
+    transform: translateY(-2px);
+}
+
+/* Play Audio Button */
+.play-audio-btn {
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    vertical-align: middle;
+    transition: color 0.2s ease;
+}
+
+.flashcard-audio-btn {
+    font-size: 1.8rem;
+    margin-top: 10px;
+}
+
+#addWordAudioBtn {
+    font-size: 1.4rem;
+}
+
+.play-audio-btn:hover {
+    color: #EBA0A4;
+}
+
+/* --- Sentence Corrector Styles --- */
+#sentenceInput {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    margin-top: 15px;
+    box-sizing: border-box;
+    color: var(--text-color);
+    background-color: var(--background-color);
+}
+
+.sentence-corrector-controls {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+#checkSentenceBtn, #getNewWordBtn {
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#checkSentenceBtn:hover, #getNewWordBtn:hover {
+    background-color: #EBA0A4;
+    transform: translateY(-2px);
+}
+
+#correctionOutput {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+#correctionOutput.correct-feedback {
+    background-color: var(--correct-feedback-bg);
+    color: var(--correct-feedback-text);
+    border: 1px solid var(--correct-feedback-text);
+}
+
+#correctionOutput.incorrect-feedback {
+    background-color: var(--incorrect-feedback-bg);
+    color: var(--incorrect-feedback-text);
+    border: 1px solid var(--incorrect-feedback-text);
+}
+
+#correctionOutput ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+#wordToUseDisplay {
+    margin-top: 15px;
+    font-size: 1.1em;
+    color: var(--text-color);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    nav button {
+        width: 100%;
+        padding: 0.6rem 1rem;
+    }
+
+    main {
+        margin: 10px auto;
+        padding: 15px;
+    }
+
+    #vocabularyList li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #vocabularyList li .word-content {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .edit-btn, .remove-btn {
+        width: calc(50% - 5px);
+        margin-left: 0;
+        margin-top: 5px;
+    }
+
+    .feedback-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .word-input-container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 5px;
+    }
+
+    .word-input-container input {
+        width: 100%;
+    }
+
+    #addWordAudioBtn {
+        width: 100%;
+        padding: 8px 10px;
+        font-size: 1.2rem;
+    }
+}

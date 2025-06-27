@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My English Vocabulary</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>My English Vocabulary</h1>
+        <nav>
+            <button id="showAddWordSection">Add Word</button>
+            <button id="showVocabularyListSection">View Vocabulary</button>
+            <button id="showExerciseSection">Exercise (Flashcards)</button>
+            <button id="showSentenceCorrectorSection">Sentence Corrector</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="addWordSection" class="active">
+            <h2>Add/Edit Word</h2>
+            <form id="wordForm">
+                <div class="input-group">
+                    <label for="word">English Word:</label>
+                    <div class="word-input-container">
+                        <input type="text" id="word" placeholder="Ex: ephemeral" required>
+                        <button type="button" id="addWordAudioBtn" class="play-audio-btn" title="Listen to word"><i class="fas fa-volume-up"></i></button>
+                    </div>
+                </div>
+                <div class="input-group">
+                    <label for="definition">Definition:</label>
+                    <textarea id="definition" placeholder="Definition will be fetched automatically" rows="3" readonly></textarea>
+                </div>
+                <div class="input-group">
+                    <label for="example">Example Sentence:</label>
+                    <textarea id="example" placeholder="An example sentence will be fetched automatically" rows="3" readonly></textarea>
+                </div>
+                <button type="submit" id="addUpdateBtn">Add to Vocabulary</button>
+            </form>
+        </section>
+
+        <section id="vocabularyListSection" class="hidden">
+            <h2>My Words</h2>
+            <ul id="vocabularyList">
+                </ul>
+        </section>
+
+        <section id="exerciseSection" class="hidden">
+            <h2>Memorization Exercise (Flashcards)</h2>
+            <p id="noWordsMessage" style="display: none;">Add words to your vocabulary to start the exercise.</p>
+            <button id="startExercise">Start Exercise</button>
+
+            <div id="flashcardContainer" class="hidden">
+                <div id="flashcard">
+                    <div class="flashcard-inner">
+                        <div class="flashcard-front" id="flashcardFront">
+                            </div>
+                        <div class="flashcard-back" id="flashcardBack">
+                            </div>
+                    </div>
+                </div>
+                <div class="feedback-buttons">
+                    <button id="correctBtn" class="feedback-btn correct">Correct</button>
+                    <button id="incorrectBtn" class="feedback-btn incorrect">Incorrect</button>
+                </div>
+                <button id="nextCard" class="next-card-btn">Next Card</button>
+            </div>
+        </section>
+
+        <section id="sentenceCorrectorSection" class="hidden">
+            <h2>Sentence Corrector</h2>
+            <p id="wordToUseDisplay">Your word to use: <strong>"Word"</strong>. Write a sentence using this word.</p>
+            <textarea id="sentenceInput" placeholder="Type your sentence here..." rows="4"></textarea>
+            <div class="sentence-corrector-controls">
+                <button id="checkSentenceBtn">Check Sentence</button>
+                <button id="getNewWordBtn">New Word</button>
+            </div>
+            <p id="correctionOutput"></p>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
